@@ -6,10 +6,11 @@ const setttingupp = async()=>{
     const app = express();
     app.use(bodyparser.json);
     app.use(bodyparser.urlencoded({extended:true}));    
-    app.listen(Port,()=>{
+    app.listen(Port,async ()=>{
         console.log("Server Started...");
-        // console.log(process.env);
-
+        
+       
+        
     })
 }
 
