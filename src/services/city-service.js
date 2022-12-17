@@ -10,7 +10,6 @@ class CityService{
             const city = await this.cityservice.createCity(data);
             return city;    
         } catch (error) {
-            
             throw {error};
         }
     
@@ -25,13 +24,10 @@ class CityService{
         }
     }
 
-    async updateCity(cityid , data){
+    async updateCity( cityid , data){
         try{
-            const city = await this.cityservice.updateCity(data,{
-                where:{
-                    id:cityid
-                }
-            })
+            const city = await this.cityservice.updateCity(cityid , data)
+            return city;
         }catch(error){
             throw {error};
         }
@@ -39,6 +35,7 @@ class CityService{
     async getCity(data){
         try {
             const city = await this.cityservice.getcity(data);
+            return city;
         } catch (error) {
             throw {error};
         }

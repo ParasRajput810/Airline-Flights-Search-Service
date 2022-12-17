@@ -1,12 +1,12 @@
 const { City } = require("../models/index");
 
 class CityRepository{
-    async createCity( body   ){
+    async createCity( { name }  ){
         try{
-            const city = await City.create(body);
+            const city = await City.create({name});
             return city;
         }catch(error){
-            console.log(body);
+            console.log();
             throw {error};
         }
     }
@@ -26,11 +26,9 @@ class CityRepository{
 
     async updateCity(cityid , data){
         try {
-            const city = await City.update(data,{
-                where:{
-                    id:cityid
-                }
-            })
+            const city = await City.findByPk(cityid);
+            city.name = data.name;
+            await city.save();
             return city;
         } catch (error) {
             throw {error};
@@ -40,13 +38,10 @@ class CityRepository{
 
     async getcity(cityid){
         try {
-            const city = await City.findall({
-                where :{
-                    id: cityid
-                }
-            })
+            const city = await City.findByPk(cityid)
             return city;
         } catch (error) {
+            console.log(cityid)
             throw {error}
         }
     }

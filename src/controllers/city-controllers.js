@@ -5,12 +5,13 @@ const City = new CityService();
 const create = async(req,res)=>{
     try {
         const city = await City.createCity(req.body);
-        return res.status(204).json({
-            data : city,
-            Status : "Success",
-            Message : "City Created Successfully.",
-            err : {}
-        });
+        return res.status(201).json({
+            data:city,
+            success :true,
+            message : "City Created Successfully",
+            err:{}
+        }
+        ) 
     } catch (error) {
         return res.status(501).json({
             data:{},
@@ -24,12 +25,12 @@ const create = async(req,res)=>{
 const destroy = async(req,res)=>{
     try {
         const city = await City.deleteCity(req.params.id);
-        return res.status(204).json({
-            data : city,
-            Status : "Success",
-            Message : "deleted City  Successfully.",
+        return res.status(202).json({
+            data: city,
+            success:true,
+            message : "City Deleted Successfully",
             err : {}
-        });
+        })
     } catch (error) {
         return res.status(501).json({
             data:{},
@@ -41,13 +42,13 @@ const destroy = async(req,res)=>{
 }
 const update = async(req,res)=>{
     try {
-        const city = await City.updateCity(req.body, req.params.id);
-        return res.status(204).json({
-            data : city,
-            Status : "Success",
-            Message : "City updated Successfully.",
-            err : {}
-        });
+        const city = await City.updateCity( req.params.id , req.body);
+        return res.status(206).json({
+            data :city,
+            Success: true,
+            message : "City Updated Successfully",
+            err : {},
+        })
     } catch (error) {
         return res.status(501).json({
             data:{},
@@ -59,12 +60,12 @@ const update = async(req,res)=>{
 }
 const getcity = async(req,res)=>{
     try {
-        const city = await City.getCity(req.params.id);
-        return res.status(204).json({
-            data : city,
-            Status : "Success",
-            Message : "Got City Successfully.",
-            err : {}
+        const response = await City.getCity(req.params.id);
+        console.log(response)
+        return res.status(200).json({
+            data:response,
+            sucess : true,
+            message : "Successfully fetched a city"
         });
     } catch (error) {
         return res.status(501).json({
