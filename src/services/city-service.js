@@ -40,6 +40,15 @@ class CityService{
             throw {error};
         }
     }
+
+    async getAll(){
+        try {
+            const city = await this.cityservice.getall();
+            return city;
+        } catch (error) {
+            throw {error};
+        }
+    }
 }
 
 module.exports = CityService;

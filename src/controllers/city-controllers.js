@@ -77,9 +77,30 @@ const getcity = async(req,res)=>{
     }
 }
 
+const getall = async(req,res)=>{
+    try {
+        const city = await City.getAll();
+        return res.status(207).json({
+            data : city,
+            success : true,
+            message : "City Fetched Successfully",
+            error:{},
+        })
+    } catch (error) {
+        console.log("Error in controller")
+        return res.status(501).json({
+            data : {},
+            success : false,
+            message : "Cannot able to fetch ",
+            error : {error},
+        })
+    }
+}
+
 module.exports = {
     create,
     update,
     destroy,
-    getcity
+    getcity,
+    getall,
 }
