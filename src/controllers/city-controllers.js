@@ -79,7 +79,7 @@ const getcity = async(req,res)=>{
 
 const getall = async(req,res)=>{
     try {
-        const city = await City.getAll();
+        const city = await City.getAll(req.query);
         return res.status(207).json({
             data : city,
             success : true,

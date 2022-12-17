@@ -1,5 +1,6 @@
 const { City } = require("../models/index");
 
+const { Op } = require('sequelize');
 class CityRepository{
     async createCity( { name }  ){
         try{
@@ -46,14 +47,25 @@ class CityRepository{
         }
     }
 
-    async getall(){
+    async getall(filter){
         try {
+            if(filter.name){
+                const city = await City.findAll({
+                    where:{
+                        name:{
+                            [Op.startsWith]: filter.name
+                        }
+                    }
+                });
+                return city;
+            }
             const city = await City.findAll();
             return city;
         } catch (error) {
-            
+            console.log(filter.name);
             throw {error};
         }
     }
+    
 }
 module.exports = CityRepository;

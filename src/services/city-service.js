@@ -41,11 +41,13 @@ class CityService{
         }
     }
 
-    async getAll(){
+    async getAll(filter){
         try {
-            const city = await this.cityservice.getall();
+            const city = await this.cityservice.getall({name:filter.name});
             return city;
         } catch (error) {
+            console.log(filter);
+            console.log("Error in service");
             throw {error};
         }
     }
