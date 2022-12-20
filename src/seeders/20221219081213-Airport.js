@@ -13,52 +13,36 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('Airports' , [{
-      name : "INDIRA GANDHI INTERNATIONAL AIRPORT",
-      cityId: 14,
+    await queryInterface.bulkInsert('Airplanes' , [{
+      model_number : "MOL1 L",
+      capacity: 250,
       createdAt: new Date(),
       updatedAt: new Date()
     },
   {
-    name : "SAFDARJUNT AIRPORT",
-    cityId: 14,
+    model_number : "SOL1 L",
+    capacity: 310,
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
-    name : "INDIRA GANDHI INTERNATIONAL AIRPORT TERMINAL(1)",
-    cityId: 14,
+    model_number: "MRAM L",
+    capacity: 210,
     createdAt: new Date(),
       updatedAt: new Date()
   },
   {
-    name : "Pune International Airport",
-    cityId: 6,
+    model_number : "BU33 L",
+    capacity: 320,
     createdAt: new Date(),
       updatedAt: new Date()
   },
   {
-    name : "Sri Guru Ram Dass Jee International Airport, Amritsar",
-    cityId: 8,
+    model_number: "MVN1 L",
+    capacity: 400,
     createdAt: new Date(),
       updatedAt: new Date()
   },
-  {
-    name : "Ludhiana Airport (LUH)",
-    cityId: 8,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },{
-    name : "Vijayawada International Airport",
-    cityId: 15,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },{
-    name : "Visakhapatnam International Airport",
-    cityId: 15,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }
 ], {})
   },
 
