@@ -12,4 +12,5 @@ router.delete("/city/:id" , CityController.destroy);
 router.get("/city" , CityController.getall);
 router.patch("/city/:id" , CityController.update);
 router.post("/flights" , flightcontroller.createFlight );
+router.get("/flights" , flightcontroller.getflights);
 module.exports = router;

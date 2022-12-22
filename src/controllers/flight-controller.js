@@ -22,5 +22,23 @@ const createFlight = async(req,res)=>{
     }
 }
 
-
-module.exports = {createFlight};
+const getflights = async (req,res) =>{
+    try {
+        const flights = await flightservice.getAllFlights(req.query);
+        return res.status(201).json({
+            data:flights,
+            message:"Flight fetched Successfully",
+            Success:true,
+            err :{}
+        })
+    } catch (error) {
+        console.log("Something happend in controller layer")
+        return res.status(501).json({
+            data : {},
+            success : false,
+            message : "Cannot able to get flight ",
+            error : {error},
+        })
+    }
+}
+module.exports = {createFlight, getflights};
