@@ -31,6 +31,23 @@ class FlightService {
             throw {error};
         }
     }
+    async getflightbyid(bookingid){
+        try {
+            const flights = await this.flightrepository.getbyid(bookingid);
+            return flights;
+        } catch (error) {
+            throw {error};
+        }
+    }
+    async updateflight(data , bookingid){
+        try {
+            const flights = await this.flightrepository.update(data,bookingid);
+            return flights;
+        } catch (error) {
+            console.log("service");
+            throw {error};
+        }
+    }
 }
 
 module.exports = FlightService;

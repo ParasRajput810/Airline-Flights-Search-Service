@@ -48,6 +48,30 @@ class FlightRepository{
         }
 
     }
+    async getbyid(bookingid){
+        try {
+            const flight = await Flight.findByPk(bookingid);
+            return flight;
+        } catch (error) {
+            throw {error};   
+        }
+    }
+
+    async update(data , bookingid){
+        
+        try {
+            const flights = await Flight.findByPk(bookingid);
+            await Flight.update(data , {
+                where :{
+                    id: bookingid
+                }
+            });
+            return true;
+        } catch (error) {
+            console.log("Repo error");
+            throw {error};
+        }
+    }
 
 }
 
